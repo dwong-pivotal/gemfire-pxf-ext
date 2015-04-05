@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<client-cache>
+	<pool name="svrPool1">
+		<locator host="host1" port="40404" />
+	</pool>
+	<pool name="svrPool2">
+		<locator host="host2" port="40404" />
+	</pool>
+	<region name="clientR1" refid="PROXY" pool-name="svrPool1" />
+	<region name="clientR2" refid="PROXY" pool-name="svrPool2" />
+	<region name="clientsPrivateR" refid="LOCAL" />
+</client-cache>

@@ -1,0 +1,11 @@
+
+<profile>
+	<name>GEMFIRE</name>
+	<description>A profile for reading Gemfire data
+	</description>
+	<plugins>
+		<fragmenter>io.pivotal.pxf.plugins.gemfire.GemfireFragmenter</fragmenter>
+		<accessor>io.pivotal.pxf.plugins.gemfire.GemfireAccessor</accessor>
+		<resolver>io.pivotal.pxf.plugins.gemfire.GemfireResolver</resolver>
+	</plugins>
+</profile>
