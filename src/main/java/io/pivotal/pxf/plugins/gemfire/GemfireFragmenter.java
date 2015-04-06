@@ -13,6 +13,8 @@ import com.pivotal.pxf.api.utilities.InputData;
 
 public class GemfireFragmenter extends Fragmenter {
 
+	private static final String URL_HOST = "URL-HOST";
+
 	private static final Log LOG = LogFactory.getLog(GemfireFragmenter.class);
 
 	private Parameters params;
@@ -22,20 +24,19 @@ public class GemfireFragmenter extends Fragmenter {
 		params = new Parameters(metaData);
 	}
 
-	// "phd1:10334"
-	
 	@Override
 	public List<Fragment> getFragments() throws Exception {
+
+		String pxfHost = inputData.getUserProperty(URL_HOST);
+
+		if (LOG.isDebugEnabled()) {
+			LOG.debug("Locators:" + params.getLocators()[0] + ", PXF host:" + pxfHost);
+		}
+
 		List<Fragment> fragments = new ArrayList<Fragment>();
-		String host = params.getLocators()[0];
-		
-		LOG.info("Host:" + host);
-		
-//		fragments.add(new Fragment(host, new String[] { host.contains(":") ? host.substring(0, host.indexOf(":"))
-//		        : host }, new byte[0]));
-		fragments.add(new Fragment("phd1", new String[] { "phd1" }, new byte[0]));
-		
+
+		fragments.add(new Fragment(inputData.getDataSource(), new String[] { pxfHost }, new byte[0]));
+
 		return fragments;
 	}
-
 }

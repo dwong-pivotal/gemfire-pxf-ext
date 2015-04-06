@@ -15,8 +15,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.7</java.version>
 		<pxf-test-version>2.0.1.0-1</pxf-test-version>
-		<hadoop-version>2.6.0.3.0.0.0-249</hadoop-version>
-        <pxf-version>2.5.0.0</pxf-version>		
+		<pxf-version>2.5.0.0</pxf-version>
+		<gemfire.version>8.1.0</gemfire.version>
+		<!-- <hadoop-version>2.6.0.3.0.0.0-249</hadoop-version> -->
 	</properties>
 
 	<dependencies>
@@ -37,7 +38,7 @@
 		<dependency>
 			<groupId>com.gemstone.gemfire</groupId>
 			<artifactId>gemfire</artifactId>
-			<version>8.1.0</version>
+			<version>${gemfire.version}</version>
 		</dependency>
 
 		<dependency>
@@ -47,9 +48,22 @@
 		</dependency>
 
 		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.gopivotal</groupId>
 			<artifactId>pxf-test</artifactId>
 			<version>${pxf-test-version}</version>
+			<scope>test</scope>
 			<exclusions>
 				<exclusion>
 					<artifactId>jetty-server</artifactId>
@@ -78,9 +92,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
-					<!-- http://maven.apache.org/plugins/maven-compiler-plugin/ -->
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 				</configuration>
 			</plugin>
 		</plugins>
